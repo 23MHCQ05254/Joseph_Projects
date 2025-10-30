@@ -1,0 +1,40 @@
+{% extends 'books/base.html' %}
+{% block content %}
+<div class="container mt-4">
+  <h3>Send Message</h3>
+  <form method="post">
+    {% csrf_token %}
+
+    <div class="mb-3">
+      <label for="receiver_id">To:</label>
+      <select name="receiver_id" class="form-control" id="receiverSelect">
+        {% for user in users %}
+          <option value="{{ user.id }}" {% if user.id == prefill_id %}selected{% endif %}>
+            {{ user.username }}
+          </option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="content">Message:</label>
+      <textarea name="content" class="form-control" required></textarea>
+    </div>
+
+    <button class="btn btn-success">Send</button>
+  </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+<script>
+  $(document).ready(function() {
+    $('#receiverSelect').select2({
+      placeholder: 'Search user...',
+      width: '100%'
+    });
+  });
+</script>
+{% endblock %}

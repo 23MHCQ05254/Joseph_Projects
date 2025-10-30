@@ -1,0 +1,20 @@
+{% extends 'books/base.html' %}
+{% block content %}
+<div class="container mt-5">
+  <div class="col-md-8 offset-md-2">
+    <div class="shadow p-4 rounded book-form">
+      <h2 class="mb-4 text-center">
+        <span class="material-symbols-outlined" style="vertical-align:middle; font-size:28px;">add</span>
+        Add a Book
+      </h2>
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary">Add Book</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

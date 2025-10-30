@@ -1,0 +1,28 @@
+{% extends 'books/base.html' %}
+{% block content %}
+<div class="container mt-4">
+  <div class="card mb-4 book-details">
+    <img src="{{ book.image.url }}" class="card-img-top" style="max-width:400px; height:auto; margin:auto;">
+    <div class="card-body">
+      <h3>{{ book.title }}</h3>
+      <p><strong>Author:</strong> {{ book.author }}</p>
+      <p><strong>Subject:</strong> {{ book.subject }}</p>
+      <p><strong>Department:</strong> {{ book.department }}</p>
+      <p><strong>Semester:</strong> {{ book.semester }}</p>
+      <p><strong>Price:</strong> ₹{{ book.price }}</p>
+      <p><strong>Condition:</strong> {{ book.condition }}</p>
+      <p><strong>Posted by:</strong> {{ book.user.username }}</p>
+
+      {% if book.contact_number %}
+        <p><strong>Contact Number:</strong> {{ book.contact_number }}</p>
+      {% else %}
+        <p class="text-muted"><em>No contact number provided.</em></p>
+      {% endif %}
+
+      <a href="{% url 'send_message' %}?user={{ book.user.id }}" class="btn btn-primary mt-2">
+        <span class="material-symbols-outlined">chat</span> Message Seller
+      </a>
+    </div>
+  </div>
+</div>
+{% endblock %}

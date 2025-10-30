@@ -1,0 +1,19 @@
+body {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.card {
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #ccc;
+}
+
+.navbar {
+    background-color: #343a40 !important;
+    color: white;
+}
+
+a, .nav-link {
+    color: #000000;
+}
